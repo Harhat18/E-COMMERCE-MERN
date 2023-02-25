@@ -60,6 +60,12 @@ const productSchema = mongoose.Schema({
       },
     },
   ],
+
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    require: true,
+  },
   createAt: {
     type: Date,
     default: Date.now,
