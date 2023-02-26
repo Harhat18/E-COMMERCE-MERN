@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
+
 const productSchema = mongoose.Schema({
   name: {
     type: String,
-    requrired: [true, "Please Enter product Name"],
+    required: [true, "Please Enter product Name"],
     trim: true,
   },
   description: {
     type: String,
-    requrired: [true, "Please Enter product Description"],
+    required: [true, "Please Enter product Description"],
   },
   price: {
     type: Number,
-    requrired: [true, "Please Enter product Price"],
+    required: [true, "Please Enter product Price"],
     maxLength: [8, "Price cannot exceed 8 characters"],
   },
-  rating: {
+  ratings: {
     type: Number,
     default: 0,
   },
@@ -22,21 +23,21 @@ const productSchema = mongoose.Schema({
     {
       public_id: {
         type: String,
-        requrired: true,
+        required: true,
       },
       url: {
         type: String,
-        requrired: true,
+        required: true,
       },
     },
   ],
   category: {
     type: String,
-    requrired: [true, "Please Enter product Category"],
+    required: [true, "Please Enter Product Category"],
   },
-  stock: {
+  Stock: {
     type: Number,
-    requrired: [true, "Please Enter product Stock"],
+    required: [true, "Please Enter product Stock"],
     maxLength: [4, "Stock cannot exceed 4 characters"],
     default: 1,
   },
@@ -46,17 +47,22 @@ const productSchema = mongoose.Schema({
   },
   reviews: [
     {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+      },
       name: {
         type: String,
-        requrired: true,
+        required: true,
       },
       rating: {
         type: Number,
-        requrired: true,
+        required: true,
       },
       comment: {
         type: String,
-        requrired: true,
+        required: true,
       },
     },
   ],
@@ -64,9 +70,9 @@ const productSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    require: true,
+    required: true,
   },
-  createAt: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },
