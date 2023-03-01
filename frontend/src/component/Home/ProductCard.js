@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
           ({product.numOfReviews} Reviews)
         </span>
       </div>
-      <span>{`TL${product.price}`}</span>
+      <span>{`${product.price} TL`}</span>
     </Link>
   );
 };
